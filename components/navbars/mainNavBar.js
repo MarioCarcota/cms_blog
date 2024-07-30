@@ -81,7 +81,7 @@ const SearchInput = () => {
         ref={inputRef}
         type="text"
         placeholder="Search an article..."
-        className="w-30 py-2 text-sm pl-10 pr-14 text-tblack bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-red"
+        className="w-30 py-2 text-[16px] pl-10 pr-14 text-tblack bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-red"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
