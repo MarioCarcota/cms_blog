@@ -9,6 +9,7 @@ import {
   XIcon,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { TransitionLink } from "../utils/TransitionLink";
 
 const MainNavBar = () => {
   return (
@@ -32,9 +33,11 @@ const Logo = () => {
 
 const NavLeft = () => {
   return (
-    <div className="flex items-center gap-6">
-      <Logo />
-    </div>
+    <TransitionLink href={"/"}>
+      <div className="flex items-center gap-6">
+        <Logo />
+      </div>
+    </TransitionLink>
   );
 };
 
