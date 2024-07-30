@@ -17,7 +17,7 @@ To get started follow these steps:
 
    ```bash
    git clone https://github.com/MarioCarcota/cms_blog.git
-   cd deploythething
+   cd cms_blog
    ```
 
 2. **Install Dependencies**:
