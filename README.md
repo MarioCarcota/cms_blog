@@ -2,6 +2,8 @@
 
 This was created for a tech interview, the main goal was to create a blog with nextjs and importing live the articles from Strapi an headless content editor and db.
 
+Check the [live demo](https://cms-blog-sepia.vercel.app/)!
+
 ## Table of Contents
 
 - [Installation](#installation)
