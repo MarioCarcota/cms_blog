@@ -46,6 +46,9 @@ To get started follow these steps:
 
 ## Packages
 
+- Framer-Motion: animation package that helps animate everything seamlessly inline;
+- Lucide-react: full icon library
+
 ## License
 
 This application is licensed under the MIT License. See the license file for more information.

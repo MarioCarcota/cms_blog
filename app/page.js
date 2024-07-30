@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export const metadata = {
   title: "Headless CMS Blog with NextJS",
   description: "This is a blog created with nextjs and Strapi headless content",

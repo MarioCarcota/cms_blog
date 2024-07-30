@@ -8,7 +8,7 @@ html,
 body {
   font-family: "Poppins", sans-serif !important;
   scroll-behavior: smooth;
-  background-color: #ebf9ff;
+  background-color: #f4f8f1;
 
   transition-property: opacity, transform, filter, background;
   transition-timing-function: ease-in-out;
