@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from "react";
 
 const MainNavBar = () => {
   return (
-    <nav className="bg-white z-50 p-4 border-b-[1px] border-gray-200 flex items-center justify-between relative">
+    <nav className="bg-white z-50 p-4 border-b-[1px] flex items-center justify-between relative">
       <NavLeft />
       <NavRight />
     </nav>
@@ -23,7 +23,7 @@ const Logo = () => {
   return (
     <div className="flex justify-center items-center gap-1">
       <BookDashed stroke="#EC4E20" size={30} />
-      <h1 className="md:block hidden text-2xl text-darkBlue font-bold">
+      <h1 className="md:block hidden text-2xl text-tblack font-bold">
         Mario&apos;s Blog
       </h1>
     </div>
