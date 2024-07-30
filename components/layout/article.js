@@ -16,7 +16,7 @@ function Article() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative w-full h-36 md:h-48 rounded-md  overflow-hidden">
+        <div className="relative w-full h-48 rounded-md  overflow-hidden">
           <Image
             src={
               "https://images.unsplash.com/photo-1473172707857-f9e276582ab6?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
