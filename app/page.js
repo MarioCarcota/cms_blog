@@ -1,13 +1,14 @@
 import ArticleCard from "@/components/layout/articleCard";
 import PinnedArticle from "@/components/layout/PinnedArticle";
+import { fetchBlogs } from "./lib/api";
+import ArticlesHome from "@/components/renderers/articlesHome";
 
 export const metadata = {
   title: "Headless CMS Blog with NextJS",
   description: "This is a blog created with nextjs and Strapi headless content",
 };
 
-export default function Home() {
-  const arr = ["gg", "bb", "weew", "dd", "ee", "rr", "ss", "ww", "we"];
+export default async function Home() {
   return (
     <main className="flex max-w-screen-2xl mx-auto flex-col items-center justify-between p-2 lg:p-4">
       <PinnedArticle />
@@ -18,9 +19,7 @@ export default function Home() {
         </h1>
 
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-6 gap-y-6 md:gap-y-10 w-full">
-          {arr.map(() => {
-            return <ArticleCard key={Math.random()} />;
-          })}
+          <ArticlesHome />
         </div>
       </div>
     </main>

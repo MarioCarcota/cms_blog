@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import { TransitionLink } from "../utils/TransitionLink";
 import { ArrowRight, Calendar } from "lucide-react";
 
-function ArticleCard() {
+function ArticleCard({ data }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const article = data.attributes;
+
   return (
-    <TransitionLink href="/b/slug">
+    <TransitionLink href={`/b/${article.slug}`}>
       <div
         className={`w-full h-full rounded-md overflow-hidden transition-all duration-300 ${
           isHovered ? "scale-[1.02]" : ""
@@ -19,7 +21,7 @@ function ArticleCard() {
         <div className="relative w-full h-48 rounded-md  overflow-hidden">
           <Image
             src={
-              "https://images.unsplash.com/photo-1473172707857-f9e276582ab6?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              "http://127.0.0.1:1337" + article.headerImage.data.attributes.url
             }
             width={800}
             height={800}
@@ -30,12 +32,16 @@ function ArticleCard() {
           />
 
           <div className="absolute bottom-0 left-0 flex gap-2 text-sm items-center">
-            <div className="bg-accent px-2 py-1 rounded-bl-md rounded-tr-md text-tblack font-medium flex gap-2 text-sm justify-content items-center">
-              TAG 1
-            </div>
-            <div className="bg-red px-2 py-1 rounded-t-md font-medium text-tblack flex gap-2 text-sm justify-content items-center">
-              TAG 2
-            </div>
+            {article.tag1 && (
+              <div className="bg-accent px-2 py-1 rounded-bl-md rounded-tr-md text-tblack font-medium flex gap-2 text-sm justify-content items-center">
+                {article.tag1}
+              </div>
+            )}
+            {article.tag2 && (
+              <div className="bg-red px-2 py-1 rounded-t-md font-medium text-tblack flex gap-2 text-sm justify-content items-center">
+                {article.tag2}
+              </div>
+            )}
           </div>
 
           <div
@@ -52,11 +58,11 @@ function ArticleCard() {
             isHovered ? "" : ""
           }`}
         >
-          How did I live like this until now!
+          {article.Title}
         </h1>
 
         <div className="flex gap-1 text-sm opacity-70 items-center mt-1">
-          <Calendar size={16} /> July 20, 2024
+          <Calendar size={16} /> {article.date}
         </div>
 
         <div

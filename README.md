@@ -33,7 +33,7 @@ To get started follow these steps:
    Create a `.env.local` file in the root of the project and add the following variables:
 
    ```env
-   STRAPI=your_strapi_api_key
+   STRAPI_API_TOKEN=your_strapi_api_key
    ```
 
 4. **Run the Development Server**:

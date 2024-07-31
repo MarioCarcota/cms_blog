@@ -86,7 +86,7 @@ const ArticlePage = ({ tags, date, title, content, headerImage }) => {
   );
 };
 
-const Article = () => {
+const Article = ({ data }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [articleData, setArticleData] = useState(null);
 

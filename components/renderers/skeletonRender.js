@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-function SkeletonRender() {
+function useSkeletonCount() {
   const [skeletonCount, setSkeletonCount] = useState(9); // Default to 9
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function SkeletonRender() {
     return () => window.removeEventListener("resize", updateSkeletonCount);
   }, []);
 
-  return <div>skeletonRender</div>;
+  return skeletonCount;
 }
 
-export default SkeletonRender;
+export default useSkeletonCount;
