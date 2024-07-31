@@ -1,4 +1,4 @@
-import Article from "@/components/layout/article";
+import ArticleCard from "@/components/layout/articleCard";
 import PinnedArticle from "@/components/layout/PinnedArticle";
 
 export const metadata = {
@@ -19,7 +19,7 @@ export default function Home() {
 
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-6 gap-y-6 md:gap-y-10 w-full">
           {arr.map(() => {
-            return <Article key={Math.random()} />;
+            return <ArticleCard key={Math.random()} />;
           })}
         </div>
       </div>

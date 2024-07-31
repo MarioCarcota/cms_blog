@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { TransitionLink } from "../utils/TransitionLink";
 import { ArrowRight, Calendar } from "lucide-react";
 
-function Article() {
+function ArticleCard() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -77,4 +77,4 @@ function Article() {
   );
 }
 
-export default Article;
+export default ArticleCard;
