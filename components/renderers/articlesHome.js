@@ -50,7 +50,6 @@ function ArticlesHome() {
     (article) => !article.attributes.isPinned
   );
 
-  console.log(filteredArticles);
   return (
     <AnimatePresence>
       {loading

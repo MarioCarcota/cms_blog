@@ -50,6 +50,7 @@ To get started follow these steps:
 
 - Framer-Motion: animation package that helps animate everything seamlessly inline;
 - Lucide-react: full icon library
+- Remark: to convert the markdown syntax in usable html code
 
 ## License
 

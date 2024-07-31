@@ -29,3 +29,19 @@ export const fetchBlogPinned = async () => {
 
   return response;
 };
+
+export const fetchBlogArticle = async (slug) => {
+  const reqOptions = {
+    headers: {
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+    },
+  };
+
+  const request = await fetch(
+    `http://127.0.0.1:1337/api/blogs?populate=*&filters[slug][$eq]=${slug}`,
+    reqOptions
+  );
+  const response = await request.json();
+
+  return response;
+};

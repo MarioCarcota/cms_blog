@@ -1,13 +1,20 @@
+import { fetchBlogArticle } from "@/app/lib/api";
 import Article from "@/components/renderers/article";
 import { TransitionLink } from "@/components/utils/TransitionLink";
 import { ArrowLeft } from "lucide-react";
+import "/styles/articlePage.css";
 
 export const metadata = {
   title: "Headless CMS Blog with NextJS",
   description: "This is a blog created with nextjs and Strapi headless content",
 };
 
-export default function ArticlePage() {
+export default async function ArticlePage({ params }) {
+  const { slug } = params;
+  const article = await fetchBlogArticle(slug);
+  if (article.data.length === 0) return null;
+  const slugArticle = article.data[0];
+
   return (
     <main className="flex max-w-screen-2xl mx-auto flex-col items-center justify-between p-2 lg:p-4">
       <TransitionLink href={"/"}>
@@ -16,7 +23,7 @@ export default function ArticlePage() {
           Go back home
         </div>
       </TransitionLink>
-      <Article />
+      <Article data={slugArticle.attributes} />
     </main>
   );
 }
