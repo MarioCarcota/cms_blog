@@ -45,3 +45,18 @@ export const fetchBlogArticle = async (slug) => {
 
   return response;
 };
+export const fetchBlogArticleBySearch = async (searchText) => {
+  const reqOptions = {
+    headers: {
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+    },
+  };
+
+  const request = await fetch(
+    `https://deserving-idea-0f81c30e1c.strapiapp.com/api/blogs?filters[Title][$containsi]=${searchText}&populate=*`,
+    reqOptions
+  );
+  const response = await request.json();
+
+  return response;
+};
