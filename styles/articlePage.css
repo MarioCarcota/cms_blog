@@ -16,3 +16,7 @@ ul {
 bold {
   font-weight: bold;
 }
+
+img {
+  border-radius: 0.5rem;
+}

@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import useSkeletonCount from "./skeletonRender";
 import ArticleCard from "../layout/articleCard";
 import ArticleCardSkeleton from "./skeletonArticleCard";
+import { fetchBlogs } from "@/app/lib/api";
 
 function ArticlesHome() {
   const [articles, setArticles] = useState([]);
@@ -18,63 +19,75 @@ function ArticlesHome() {
   }, []);
 
   const fetchArticles = async () => {
-    const res = await fetch("/api/articles");
-    const data = await res.json();
-    setArticles(data.data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const res = await fetch(`/api/articles?page=${pageNumber}`);
+      const data = await res.json();
+      console.log(data);
+      if (data.data.length === 0) {
+        setHasMore(false);
+      } else {
+        setArticles((prevArticles) => [...prevArticles, ...data.data]);
+      }
+    } catch (error) {
+      console.error("Error fetching articles:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  //   const handleScroll = useCallback(() => {
-  //     if (
-  //       window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
-  //       !loading &&
-  //       hasMore
-  //     ) {
-  //       setPageNumber((prevPageNumber) => prevPageNumber + 1);
-  //     }
-  //   }, [loading, hasMore]);
+  const handleScroll = useCallback(() => {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+      !loading &&
+      hasMore
+    ) {
+      setPageNumber((prevPageNumber) => prevPageNumber + 1);
+    }
+  }, [loading, hasMore]);
 
-  //   useEffect(() => {
-  //     if (pageNumber > 1) {
-  //       fetchBlogs();
-  //     }
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   }, [pageNumber]);
+  useEffect(() => {
+    if (pageNumber > 1) {
+      fetchArticles();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
 
-  //   useEffect(() => {
-  //     window.addEventListener("scroll", handleScroll);
-  //     return () => window.removeEventListener("scroll", handleScroll);
-  //   }, [handleScroll]);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   const filteredArticles = articles.filter(
     (article) => !article.attributes.isPinned
   );
 
+  console.log(filteredArticles);
   return (
     <AnimatePresence>
-      {loading
-        ? Array.from({ length: skeletonCount }).map((_, index) => (
-            <motion.div
-              key={`skeleton-${index}`}
-              className=""
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <ArticleCardSkeleton />
-            </motion.div>
-          ))
-        : filteredArticles.map((article, index) => (
-            <motion.div
-              key={`${article.id}-${index}`}
-              className=""
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <ArticleCard data={article} />
-            </motion.div>
-          ))}
+      {filteredArticles.map((article, index) => (
+        <motion.div
+          key={`${article.id}-${index}`}
+          className=""
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <ArticleCard data={article} />
+        </motion.div>
+      ))}
+      {loading &&
+        Array.from({ length: skeletonCount }).map((_, index) => (
+          <motion.div
+            key={`skeleton-${index}`}
+            className=""
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <ArticleCardSkeleton />
+          </motion.div>
+        ))}
     </AnimatePresence>
   );
 }

@@ -1,4 +1,4 @@
-export const fetchBlogs = async () => {
+export const fetchBlogs = async (page = 1) => {
   const reqOptions = {
     headers: {
       Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
@@ -6,7 +6,7 @@ export const fetchBlogs = async () => {
   };
 
   const request = await fetch(
-    "http://127.0.0.1:1337/api/blogs?populate=*",
+    `http://127.0.0.1:1337/api/blogs?populate=*&pagination[page]=${page}`,
     reqOptions
   );
   const response = await request.json();
