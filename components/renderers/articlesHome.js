@@ -23,11 +23,19 @@ function ArticlesHome() {
       setLoading(true);
       const res = await fetch(`/api/articles?page=${pageNumber}`);
       const data = await res.json();
-      console.log(data);
+
       if (data.data.length === 0) {
         setHasMore(false);
       } else {
-        setArticles((prevArticles) => [...prevArticles, ...data.data]);
+        setArticles((prevArticles) => {
+          const newArticles = data.data.filter(
+            (newArticle) =>
+              !prevArticles.some(
+                (prevArticle) => prevArticle.id === newArticle.id
+              )
+          );
+          return [...prevArticles, ...newArticles];
+        });
       }
     } catch (error) {
       console.error("Error fetching articles:", error);
@@ -62,7 +70,6 @@ function ArticlesHome() {
     (article) => !article.attributes.isPinned
   );
 
-  console.log(filteredArticles);
   return (
     <AnimatePresence>
       {filteredArticles.map((article, index) => (
