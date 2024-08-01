@@ -22,7 +22,7 @@ const ArticlePage = ({ data, content }) => {
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
-                backgroundImage: `url("http://127.0.0.1:1337${data.headerImage.data.attributes.url}")`,
+                backgroundImage: `url("${data.headerImage.data.attributes.url}")`,
               }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>

@@ -6,7 +6,7 @@ export const fetchBlogs = async (page = 1) => {
   };
 
   const request = await fetch(
-    `http://127.0.0.1:1337/api/blogs?populate=*&pagination[page]=${page}`,
+    `https://deserving-idea-0f81c30e1c.strapiapp.com/api/blogs?populate=*&pagination[page]=${page}`,
     reqOptions
   );
   const response = await request.json();
@@ -22,7 +22,7 @@ export const fetchBlogPinned = async () => {
   };
 
   const request = await fetch(
-    "http://127.0.0.1:1337/api/blogs?populate=*&filters[isPinned][$eq]=true",
+    "https://deserving-idea-0f81c30e1c.strapiapp.com/api/blogs?populate=*&filters[isPinned][$eq]=true",
     reqOptions
   );
   const response = await request.json();
@@ -38,7 +38,7 @@ export const fetchBlogArticle = async (slug) => {
   };
 
   const request = await fetch(
-    `http://127.0.0.1:1337/api/blogs?populate=*&filters[slug][$eq]=${slug}`,
+    `https://deserving-idea-0f81c30e1c.strapiapp.com/api/blogs?populate=*&filters[slug][$eq]=${slug}`,
     reqOptions
   );
   const response = await request.json();

@@ -20,9 +20,7 @@ function ArticleCard({ data }) {
       >
         <div className="relative w-full h-48 rounded-md  overflow-hidden">
           <Image
-            src={
-              "http://127.0.0.1:1337" + article.headerImage.data.attributes.url
-            }
+            src={article.headerImage.data.attributes.url}
             width={800}
             height={800}
             alt=""

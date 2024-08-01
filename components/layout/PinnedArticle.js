@@ -54,7 +54,7 @@ const PinnedArticle = () => {
                   isHovered ? "opacity-90" : "opacity-100"
                 }`}
                 style={{
-                  backgroundImage: `url("http://127.0.0.1:1337${sarticle.attributes.headerImage.data.attributes.url}")`,
+                  backgroundImage: `url("${sarticle.attributes.headerImage.data.attributes.url}")`,
                 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
