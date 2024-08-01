@@ -1,5 +1,6 @@
 import { AlertCircle, ArrowRight, SearchIcon, XIcon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { TransitionLink } from "./TransitionLink";
 
 const highlightSearchText = (text, searchText) => {
   if (!searchText) return text;
@@ -110,21 +111,22 @@ export const SearchBar = () => {
             </div>
           ) : (
             searchResults.slice(0, 3).map((article) => (
-              <div
+              <TransitionLink
+                href={`/b/${article.attributes.slug}`}
                 key={article.id}
-                className="group flex justify-between items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
-                onClick={() => handleArticleClick(article)}
               >
-                <span className="text-sm leading-tight">
-                  {highlightSearchText(article.attributes.Title, searchText)}
-                </span>
-                <div className="transition-transform duration-300 transform group-hover:-rotate-45 group-hover:text-red">
-                  <ArrowRight
-                    size={20}
-                    className="text-gray-400 group-hover:text-red"
-                  />
+                <div className="group flex justify-between items-center px-4 py-2 cursor-pointer hover:bg-gray-100">
+                  <span className="text-sm leading-tight">
+                    {highlightSearchText(article.attributes.Title, searchText)}
+                  </span>
+                  <div className="transition-transform duration-300 transform group-hover:-rotate-45 group-hover:text-red">
+                    <ArrowRight
+                      size={20}
+                      className="text-gray-400 group-hover:text-red"
+                    />
+                  </div>
                 </div>
-              </div>
+              </TransitionLink>
             ))
           )}
         </div>
